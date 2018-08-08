@@ -8,9 +8,29 @@ class App extends Component {
       info: '',
       markers: [
         {
-          lat: 24.711925,
-          lng: 46.675590,
-          name: 'King Tower'
+          lat: 55.7497921,
+          lng: 37.5912761,
+          name: 'Vakhtangov Theater'
+        },
+        {
+          lat: 55.7602082,
+          lng: 37.6183911,
+          name: 'Bolshoi Theatre'
+        },
+        {
+          lat: 55.7597077,
+          lng: 37.6203653,
+          name: 'Malyy Theatre'
+        },
+        {
+          lat: 55.7602217,
+          lng: 37.6128953,
+          name: 'Art Theatre'
+        },
+        {
+          lat: 55.7568289,
+          lng: 37.6014191,
+          name: 'Mayakovskogo Theater'
         }
       ],
       pmarker: ''
@@ -31,7 +51,7 @@ class App extends Component {
     var mapImage = document.getElementById("map");
     mapImage.style.height = window.innerHeight + 'px';
     var map = new window.google.maps.Map(mapImage, {
-      center: {lat: 55.7508906, lng: 37.617101},
+      center: {lat: 55.7559553, lng: 37.6117459},
       zoom: 15,
       mapTypeControl: false
     });
