@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MenuBar from './MenuBar';
 
 class App extends Component {
   constructor(props) {
@@ -90,7 +91,7 @@ class App extends Component {
       });
 
       marker.longname = name;
-      marker.marker = marker;
+      marker.marker = mapMarker;
       marker.display = true;
       markers.push(marker);
     });
@@ -102,7 +103,7 @@ class App extends Component {
   openInfoWindow(marker) {
     this.closeInfoWindow();
     this.state.infoWindow.open(this.state.map, marker);
-    marker.setAnimation(window.google.maps.Animation.bounce);
+    marker.setAnimation(window.google.maps.Animation.BOUNCE);
     this.setState({
       pmarker: marker
     });
@@ -156,6 +157,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <MenuBar  markers={this.state.markers}
+                  openInfoWindow={this.openInfoWindow}
+                  closeInfoWindow={this.closeInfoWindow} />
         <div id="map" />
       </div>
     );
