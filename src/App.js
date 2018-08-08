@@ -8,25 +8,30 @@ class App extends Component {
       info: '',
       markers: [
         {
-          lat:
-          lng:
-          name:
+          lat: 24.711925,
+          lng: 46.675590,
+          name: 'King Tower'
         }
       ],
-    }
+      pmarker: ''
+    };
+
+    this.initMap = this.initMap.bind(this);
+    this.openInfoWindow = this.openInfoWindow.bind(this);
+    this.closeInfoWindow = this.closeInfoWindow.bind(this);
   }
 
   componentDidMount() {
     window.initMap = this.initMap;
-    loadMap();
+    loadMap('https://maps.googleapis.com/maps/api/js?key=AIzaSyC4mrbpxYXYHA2asFPjQsoR6jPQrr3P4P4&callback=initMap');
   }
 
   initMap() {
     var self = this;
     var mapImage = document.getElementById("map");
     mapImage.style.height = window.innerHeight + 'px';
-    var map = new window.google.maps.Map(mapview, {
-      center: {lat: 3, lng: 11},
+    var map = new window.google.maps.Map(mapImage, {
+      center: {lat: 55.7508906, lng: 37.617101},
       zoom: 15,
       mapTypeControl: false
     });
@@ -38,10 +43,10 @@ class App extends Component {
 
     this.setState({
       map: map,
-      infoWindow = markerInfo
+      infoWindow: markerInfo
     });
 
-    window.google.maps.event.addDOMListener(window, 'resize', function() {
+    window.google.maps.event.addDomListener(window, 'resize', function() {
       var center = map.getCenter();
       window.google.maps.event.trigger(map, 'resize');
       self.state.map.setCenter(center);
@@ -74,10 +79,64 @@ class App extends Component {
     });
   }
 
+  openInfoWindow(marker) {
+    this.closeInfoWindow();
+    this.state.infoWindow.open(this.state.map, marker);
+    marker.setAnimation(window.google.maps.Animation.bounce);
+    this.setState({
+      pmarker: marker
+    });
+    this.state.infoWindow.setContent('Loading...');
+    this.state.map.setCenter(marker.getPosition());
+    this.state.map.panBy(0, -200);
+    this.getMarkerInfo(marker);
+  }
+
+  //Information is got from the Foursquare API
+  getMarkerInfo(marker) {
+    var clientId = '3TQXSCSZARLE5ABTLSPG2MQ0IS3SEBY12MYIOPRTIX3SBG3R';
+    var clientSecret = 'GL1C0OUIKIMF05KJ2R2RSOLD3QBVI40UZS1TFFQOT3C1WQZA';
+
+    var foursquare = 'https://api.foursquare.com/v2/venues/search?client_id=' +
+                      clientId + '&client_secret=' + clientSecret +
+                      '&v=20180323&ll=' + marker.getPosition().lat() + ',' +
+                      marker.getPosition().lng() + '&limit=1';
+    var self = this;
+    fetch(foursquare).then(function(response) {
+      if (response.status !== 200) {
+        self.state.infoWindow.setContent('Load is failed.');
+        return ;
+      }
+      response.json().then(function(data) {
+        console.log(data);
+        var locationData = data.response.venues[0];
+        var name = `<h3>${locationData.name}</h3>`;
+        var street = `<p>${locationData.location.formattedAddress[0]}</p>`;
+        //more data
+        self.state.infoWindow.setContent(name + street);
+      });
+    })
+    .catch(function(error) {
+      self.state.infoWindow.setContent('Load is failed...')
+    });
+  }
+
+  //close the previous InfoWindow
+
+  closeInfoWindow() {
+    if(this.state.pmarker) {
+      this.state.pmarker.setAnimation(null);
+    }
+    this.setState({
+      pmarker: ''
+    });
+    this.state.infoWindow.close();
+  }
+
   render() {
     return (
       <div className="App">
-
+        <div id="map" />
       </div>
     );
   }
