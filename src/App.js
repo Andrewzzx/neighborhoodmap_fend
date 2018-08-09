@@ -9,8 +9,8 @@ class App extends Component {
       info: '',
       markers: [
         {
-          lat: 55.7497921,
-          lng: 37.5912761,
+          lat: 55.7497641,
+          lng: 37.5915945,
           name: 'Vakhtangov Theater'
         },
         {

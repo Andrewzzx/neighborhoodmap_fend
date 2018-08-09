@@ -45,7 +45,6 @@ export default class MenuBar extends Component {
     return (
       <div className="search">
         <input role="search"
-                id="search-field"
                 className="search-input"
                 aria-labelledby="filter"
                 type="text"
