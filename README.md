@@ -1,10 +1,10 @@
-#Neighborhood Map: Moscow Theatres
+# Neighborhood Map: Moscow Theatres
 
-##Overview
+## Overview
 
 The 'Neighborhood Map' project for the Udacity Nanodegree which shows the list of theaters in Moscow Centre. It uses Create-React-App starter code, Google Maps API & Foursquare API.
 
-##User Instructions
+## User Instructions
 
 To open the app locally:
 
