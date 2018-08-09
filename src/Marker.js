@@ -6,7 +6,8 @@ export default class Marker extends Component {
       <li role="button"
           className="marker"
           tabIndex="0"
-          onClick={this.props.openInfoWindow.bind(this, this.props.data.marker)}>
+          onClick={this.props.openInfoWindow.bind(this, this.props.data.marker)}
+          onKeyPress={this.props.openInfoWindow.bind(this, this.props.data.marker)}>
             {this.props.data.longname}
           </li>
     );

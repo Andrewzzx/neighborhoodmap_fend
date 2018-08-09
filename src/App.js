@@ -133,8 +133,9 @@ class App extends Component {
         var locationData = data.response.venues[0];
         var name = `<h3>${locationData.name}</h3>`;
         var street = `<p>${locationData.location.formattedAddress[0]}</p>`;
-        //more data
-        self.state.infoWindow.setContent(name + street);
+        var link = '<a href="https://foursquare.com/v/' + locationData.id +
+        '"target="_blank">More...</a>';
+        self.state.infoWindow.setContent(name + street + link);
       });
     })
     .catch(function(error) {
