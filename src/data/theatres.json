@@ -1,0 +1,27 @@
+[
+  {
+    "lat": 55.7498146,
+    "lng": 37.591445,
+    "name": "Vakhtangov Theatre"
+  },
+  {
+    "lat": 55.7602082,
+    "lng": 37.6183911,
+    "name": "Bolshoi Theatre"
+  },
+  {
+    "lat": 55.7597077,
+    "lng": 37.6203653,
+    "name": "Malyy Theatre"
+  },
+  {
+    "lat": 55.7602217,
+    "lng": 37.6128953,
+    "name": "Art Theatre"
+  },
+  {
+    "lat": 55.7568289,
+    "lng": 37.6014191,
+    "name": "Mayakovskogo Theater"
+  }
+]

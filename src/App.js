@@ -7,33 +7,7 @@ class App extends Component {
     this.state = {
       map: '',
       info: '',
-      markers: [
-        {
-          lat: 55.7497641,
-          lng: 37.5915945,
-          name: 'Vakhtangov Theater'
-        },
-        {
-          lat: 55.7602082,
-          lng: 37.6183911,
-          name: 'Bolshoi Theatre'
-        },
-        {
-          lat: 55.7597077,
-          lng: 37.6203653,
-          name: 'Malyy Theatre'
-        },
-        {
-          lat: 55.7602217,
-          lng: 37.6128953,
-          name: 'Art Theatre'
-        },
-        {
-          lat: 55.7568289,
-          lng: 37.6014191,
-          name: 'Mayakovskogo Theater'
-        }
-      ],
+      markers: require("./data/theatres.json"),
       pmarker: ''
     };
 

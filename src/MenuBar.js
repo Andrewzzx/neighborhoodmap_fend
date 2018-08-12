@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Marker from './Marker';
+import { slide as Menu } from 'react-burger-menu';
 
 export default class MenuBar extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ export default class MenuBar extends Component {
     }, this);
 
     return (
+      <Menu>
       <div className="search">
         <input role="search"
                 className="search-input"
@@ -55,6 +57,7 @@ export default class MenuBar extends Component {
           {list}
         </ul>
       </div>
+    </Menu>
     )
   }
 }
