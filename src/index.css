@@ -47,7 +47,7 @@ body {
 }
 */
 .marker {
-  color: black;
+  color: white;
 }
 
 .marker:hover {
@@ -57,22 +57,27 @@ body {
 ul {
   list-style-type: none;
   margin: 0;
-  padding: 0
+  padding: 0;
+  padding-top: 5px;
 }
 
 li {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
+  font-family: monospace;
 }
 
 .search {
   position: relative;
-  padding-left: 10px
+  padding-left: 10px;
+  padding-top: 10px;
 }
 
 .search-input {
   height: 25px;
+  padding-left: 10px;
+  font-family: monospace;
 }
 
 /* Position and sizing of burger button */
@@ -86,7 +91,7 @@ li {
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #373a47;
+  background: #fff;
 }
 
 /* Position and sizing of clickable cross button */

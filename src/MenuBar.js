@@ -44,8 +44,9 @@ export default class MenuBar extends Component {
     }, this);
 
     return (
-      <Menu>
+      <Menu width={'250px'}>
       <div className="search">
+
         <input role="search"
                 className="search-input"
                 aria-labelledby="filter"
