@@ -6,9 +6,18 @@ export default class MenuBar extends Component {
   constructor(props) {
     super();
     this.state = {
-      markers: ''
+      markers: '',
+      menuOpen: false
     };
     this.filterMarkers = this.filterMarkers.bind(this);
+  }
+
+  handleStateChange (state) {
+    this.setState({menuOpen: state.isOpen})
+  }
+
+  closeMenu () {
+    this.setState({menuOpen: false})
   }
 
   //query check and filtering
@@ -40,11 +49,13 @@ export default class MenuBar extends Component {
     var list = this.state.markers.map(function(listItem, index) {
       return (<Marker key={index}
                       openInfoWindow={this.props.openInfoWindow.bind(this)}
-                      data={listItem} />);
+                      data={listItem}
+                      />);
     }, this);
 
     return (
-      <Menu width={'250px'}>
+      <Menu width={'250px'} isOpen={this.state.menuOpen}
+            onStateChange={(state) => this.handleStateChange(state)}>
       <div className="search">
 
         <input role="search"
@@ -54,7 +65,7 @@ export default class MenuBar extends Component {
                 placeholder="Type name"
                 value={this.state.query}
                 onChange={this.filterMarkers} />
-        <ul className="location-list">
+        <ul className="location-list" onClick={() => this.closeMenu()}>
           {list}
         </ul>
       </div>
